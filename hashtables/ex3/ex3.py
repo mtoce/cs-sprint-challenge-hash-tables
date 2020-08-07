@@ -2,16 +2,25 @@ def intersection(arrays):
     """
     YOUR CODE HERE
     """
-    # not tested, do not count
     result = []
     for i, arr in enumerate(arrays):
         arrays[i] = dict.fromkeys(arr, 1)
     
     matches = []
     for i in range(1, len(arrays)):
-        matches.append(arrays[0].keys() & arrays[i].keys())
+        first_array = arrays[0].keys()
+        ith_array = arrays[i].keys()
+        # when i = 1:
+            # compares arrays[0] with arrays[1]
+            # appends to matches if there is the same value (&)
+        # when i = 2:
+            # compares arrays[0] with arrays[2]
+            # appends to matches if there is a crossover
+        # ...
+        matches.append(list(first_array & ith_array))
 
-    result = list(matches)
+    # only take one match inside matches list
+    result = matches[0]
 
     return result
 
